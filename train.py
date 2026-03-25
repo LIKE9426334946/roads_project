@@ -164,7 +164,8 @@ def main():
             f"Epoch [{epoch:03d}/{cfg['train']['epochs']:03d}] "
             f"train_loss={train_loss:.4f} val_loss={val_metrics['loss']:.4f} "
             f"mIoU={val_metrics['mIoU']:.4f} mPA={val_metrics['mPA']:.4f} "
-            f"Precision={val_metrics['Precision']:.4f} Recall={val_metrics['Recall']:.4f}"
+            f"Precision={val_metrics['Precision']:.4f} Recall={val_metrics['Recall']:.4f} "
+            f"F1={val_metrics['F1']:.4f}"
         )
 
         checkpoint = {
