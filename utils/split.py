@@ -13,4 +13,4 @@ def check_dataset(data_root: str):
 
 
 if __name__ == "__main__":
-    check_dataset("data/tiff")
+    check_dataset("/kaggle/input/datasets/balraj98/massachusetts-roads-dataset/tiff")
