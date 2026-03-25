@@ -4,7 +4,7 @@ class_names: [background, road]
 
 data:
   root: /kaggle/input/datasets/balraj98/massachusetts-roads-dataset/tiff
-  crop_size: [512, 512]
+  crop_size: [768, 768]
   eval_size: [1024, 1024]
   num_workers: 4
 
