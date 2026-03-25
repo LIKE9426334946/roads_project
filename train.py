@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 import torch
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
@@ -66,7 +66,7 @@ def train_one_epoch(model, loader, optimizer, criterion, device, scaler, amp):
         masks = batch["mask"].to(device, non_blocking=True)
 
         optimizer.zero_grad(set_to_none=True)
-        with autocast(enabled=amp):
+        with autocast("cuda", enabled=amp):
             logits = model(images)
             loss = criterion(logits, masks)
 
