@@ -35,13 +35,20 @@ class SegmentationMetric:
         precision_per_class = tp / np.clip(tp + fp, a_min=1e-12, a_max=None)
         recall_per_class = tp / np.clip(tp + fn, a_min=1e-12, a_max=None)
 
+        # 新增 F1
+        f1_per_class = 2 * precision_per_class * recall_per_class / np.clip(
+            precision_per_class + recall_per_class, a_min=1e-12, a_max=None
+        )
+
         return {
             "IoU_per_class": iou.tolist(),
             "PA_per_class": pa_per_class.tolist(),
             "Precision_per_class": precision_per_class.tolist(),
             "Recall_per_class": recall_per_class.tolist(),
+            "F1_per_class": f1_per_class.tolist(),   # 新增
             "mIoU": float(np.nanmean(iou)),
             "mPA": float(np.nanmean(pa_per_class)),
             "Precision": float(np.nanmean(precision_per_class)),
             "Recall": float(np.nanmean(recall_per_class)),
+            "F1": float(np.nanmean(f1_per_class)),   # 新增
         }
