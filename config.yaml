@@ -1,0 +1,40 @@
+seed: 42
+num_classes: 2
+class_names: [background, road]
+
+data:
+  root: data/tiff
+  crop_size: [512, 512]
+  eval_size: [1024, 1024]
+  num_workers: 4
+
+model:
+  name: unet_resnet34_attn
+  in_channels: 3
+  pretrained: true
+  use_scse: true
+  use_aspp: true
+
+train:
+  batch_size: 4
+  epochs: 80
+  lr: 0.0003
+  weight_decay: 0.0001
+  amp: true
+  vis_samples: 4
+
+eval:
+  batch_size: 2
+
+scheduler:
+  name: cosine
+  min_lr: 1.0e-6
+
+loss:
+  name: weighted_ce_dice
+  ce_weight: 0.5
+  dice_weight: 1.0
+  class_weights: [1.0, 3.0]
+
+runs:
+  root: runs
