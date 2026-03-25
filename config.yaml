@@ -1,4 +1,4 @@
-seed: 42
+seed: 23
 num_classes: 2
 class_names: [background, road]
 
